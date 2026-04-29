@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="M2R2: MultiModal Robotic Representation for Temporal Action Segmentation" />
+  <meta property="og:url" content="https://dsliwowski1.github.io/M2R2_page/" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <title>M2R2: MultiModal Robotic Representation for Temporal Action Segmentation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://tuwien-asl.github.io">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span>More Research</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== TITLE ===== -->
+  <section class="publication-header">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">M2R2: MultiModal Robotic Representation for Temporal Action Segmentation</h1>
+          <div class="is-size-3 publication-authors" style="margin-top: 0.5rem;">
+            2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUTHORS ===== -->
+  <section class="publication-author-block">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://dsliwowski1.github.io/" target="_blank">Daniel Sliwowski</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.tuwien.at/etit/ict/asl/team/dongheui-lee" target="_blank">Dongheui Lee</a><sup>1,2</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors" style="margin-top: 0.4rem;">
+              <span class="author-block"><sup>1</sup>Technische Universität Wien (TU Wien)</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>German Aerospace Center (DLR)</span>
+            </div>
+
+            <div class="column has-text-centered" style="margin-top: 1rem;">
+              <div class="publication-links">
+
+                <!-- arXiv -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2504.18662" target="_blank" class="external-link button is-normal is-rounded">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Paper PDF -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2504.18662" target="_blank" class="external-link button is-normal is-rounded">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABSTRACT ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Temporal action segmentation (TAS) has long been a key area of research in both robotics and computer
+              vision. In robotics, algorithms have primarily focused on leveraging proprioceptive information to
+              determine skill boundaries, with recent approaches in surgical robotics incorporating vision. In contrast,
+              computer vision typically relies on exteroceptive sensors, such as cameras. Existing multimodal TAS models
+              in robotics integrate feature fusion within the model, making it difficult to reuse learned features across
+              different models. Meanwhile, pretrained vision-only feature extractors commonly used in computer vision
+              struggle in scenarios with limited object visibility. In this work, we address these challenges by
+              proposing <strong>M2R2</strong>, a multimodal feature extractor tailored for TAS, which combines
+              information from both proprioceptive and exteroceptive sensors. We introduce a novel training strategy
+              that enables the reuse of learned features across multiple TAS models. Our method sets a new
+              state-of-the-art performance on three robotic datasets REASSEMBLE, (Im)PerfectPour, and JIGSAWS.
+              Additionally, we conduct an extensive ablation study to evaluate the contribution of different modalities
+              in robotic TAS tasks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OVERVIEW FIGURE ===== -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="hero-body">
+        <div class="column is-centered has-text-centered">
+          <img src="public/figures/overview.png" alt="M2R2 Overview" style="max-width: 900px; width: 100%;" />
+          <p class="is-size-6" style="margin-top: 0.8rem; color: #555;">
+            <strong>Fig. 1:</strong> Many multimodal approaches follow an end-to-end paradigm (a). Modular approaches
+            train the feature extractor and TAS model separately but rely on vision-only extractors (b). We propose
+            the <strong>M2R2</strong> feature extractor, which leverages multimodal information and integrates with
+            diverse TAS models (c).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTRIBUTIONS ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-2">Contributions</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="content">
+        <ul class="contribution-list">
+          <li>
+            <strong>Multimodal feature extractor</strong> — a deep-learning-based M2R2 feature extractor that fuses
+            vision, audio, and proprioceptive data for robotic temporal action segmentation.
+          </li>
+          <li>
+            <strong>Novel training strategy</strong> — a modular training approach that decouples feature extraction
+            from the TAS model, enabling reuse of learned features with any state-of-the-art TAS architecture
+            (MSTCN, ASRF, DiffAct, …).
+          </li>
+          <li>
+            <strong>Extensive evaluation</strong> — state-of-the-art performance on three robotic datasets
+            (REASSEMBLE, (Im)PerfectPour, JIGSAWS) and an ablation study quantifying the contribution of each sensor
+            modality.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== METHOD ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-2">Method</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">M2R2 Feature Extractor Architecture</h2>
+          </div>
+          <span class="method-text">
+            <br>
+            To compute the multimodal feature at time instant <em>t<sub>i</sub></em>, we first process each modality
+            separately: image features are extracted with an ActionCLIP visual transformer; audio features are
+            extracted from the log-mel spectrogram via the Audio Spectrogram Transformer (AST); proprioceptive signals
+            (end-effector pose, twist, gripper width, force/torque) are projected into a shared embedding space and
+            fused over the temporal dimension using a learnable embedding. All modality tokens are then fused with a
+            single self-attention Transformer encoder layer followed by an MLP.
+          </span>
+          <br><br>
+          <div class="column is-centered has-text-centered">
+            <img src="public/figures/architecture.png" alt="M2R2 Architecture" style="width: 95%;" />
+            <p class="is-size-6" style="margin-top: 0.8rem; color: #555;">
+              <strong>Fig. 2:</strong> M2R2 Feature Extractor Architecture.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">Training Strategy</h2>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <span class="method-text">
+                <br>
+                We train the M2R2 feature extractor using two complementary objectives. First, we sample windows of
+                three consecutive actions and maximize the cosine similarity between the window's average feature
+                embedding and a CLIP text embedding of a sentence describing the action sequence — encouraging the
+                model to capture action order. Second, a Boundary Regression Network predicts the probability of each
+                frame being an action boundary, supervised with a smoothed ground-truth boundary sequence. The total
+                loss is the sum of the action-contrastive loss and the boundary MSE loss.
+                <br><br>
+                After training, the Fusion Transformer, Boundary Regression Network, and CLIP text encoder are
+                discarded. The resulting per-frame M2R2 features are used to train any downstream TAS model.
+              </span>
+            </div>
+            <div class="column has-text-centered">
+              <img src="public/figures/training.png" alt="M2R2 Training" style="width: 100%;" />
+              <p class="is-size-6" style="margin-top: 0.5rem; color: #555;">
+                <strong>Fig. 3:</strong> M2R2 training objectives.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIMENTS ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-2">Experiments</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REASSEMBLE Results -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">REASSEMBLE Dataset</h2>
+          </div>
+          <span class="method-text">
+            M2R2 features achieve state-of-the-art performance on the REASSEMBLE dataset across all TAS models.
+            M2R2+ASRF attains an F1@50 of <strong>82.4%</strong> on fine-grain labels and <strong>97.1%</strong> on
+            coarse labels, outperforming the best vision-only baseline by over <strong>74 percentage points</strong>.
+            Unsupervised proprioception-only baselines (BOCPD, AWE) are surpassed by at least 46.6 pp in F1@50.
+          </span>
+          <br><br>
+          <div class="table-container" style="overflow-x: auto;">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th rowspan="2">Modalities</th>
+                  <th rowspan="2">Type</th>
+                  <th colspan="5">Fine-grain Labels</th>
+                  <th colspan="5">Coarse Labels</th>
+                </tr>
+                <tr>
+                  <th>F1@10</th><th>F1@25</th><th>F1@50</th><th>Acc</th><th>EDIT</th>
+                  <th>F1@10</th><th>F1@25</th><th>F1@50</th><th>Acc</th><th>EDIT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>BOCPD</td><td>FT</td><td>E2E</td>
+                  <td>39.2</td><td>32.6</td><td>12.8</td><td>35.0</td><td>19.7</td>
+                  <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                </tr>
+                <tr>
+                  <td>AWE</td><td>P</td><td>E2E</td>
+                  <td>72.5</td><td>68.4</td><td>35.8</td><td>54.6</td><td>54.9</td>
+                  <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                </tr>
+                <tr class="separator">
+                  <td>BrP+MSTCN</td><td>V</td><td>Modular</td>
+                  <td>12.9</td><td>10.9</td><td>8.4</td><td>7.9</td><td>18.4</td>
+                  <td>32.1</td><td>28.2</td><td>20.0</td><td>65.0</td><td>34.0</td>
+                </tr>
+                <tr>
+                  <td>BrP+ASRF</td><td>V</td><td>Modular</td>
+                  <td>12.8</td><td>11.1</td><td>8.6</td><td>6.4</td><td>19.4</td>
+                  <td>57.6</td><td>44.5</td><td>23.3</td><td>54.3</td><td>67.5</td>
+                </tr>
+                <tr>
+                  <td>BrP+DiffAct</td><td>V</td><td>Modular</td>
+                  <td>12.0</td><td>10.1</td><td>5.1</td><td>5.7</td><td>21.4</td>
+                  <td>62.9</td><td>51.8</td><td>22.5</td><td>54.8</td><td>73.4</td>
+                </tr>
+                <tr class="separator">
+                  <td>M2R2+MSTCN</td><td>V,A,P,FT,G</td><td>Modular</td>
+                  <td class="second">83.1</td><td class="second">82.7</td><td class="second">80.8</td><td class="second">82.4</td><td>79.3</td>
+                  <td>97.7</td><td>97.6</td><td>96.7</td><td>96.7</td><td>95.0</td>
+                </tr>
+                <tr>
+                  <td><strong>M2R2+ASRF</strong></td><td>V,A,P,FT,G</td><td>Modular</td>
+                  <td class="best">83.5</td><td class="best">83.4</td><td class="best">82.4</td><td class="best">82.7</td><td class="best">82.5</td>
+                  <td class="best">98.1</td><td class="best">98.1</td><td class="best">97.1</td><td class="best">96.0</td><td class="best">96.9</td>
+                </tr>
+                <tr>
+                  <td>M2R2+DiffAct</td><td>V,A,P,FT,G</td><td>Modular</td>
+                  <td>78.1</td><td>77.7</td><td>74.6</td><td>74.9</td><td>68.7</td>
+                  <td>95.1</td><td>95.0</td><td>92.1</td><td>91.7</td><td>90.3</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="is-size-6" style="color: #555; margin-top: 0.5rem;">
+            <strong>Table I:</strong> Results on REASSEMBLE. <strong>Bold</strong> = best, <u>underline</u> = second best.
+            V – vision, A – audio, P – pose, FT – force/torque, G – gripper width.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (Im)PerfectPour Results -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">(Im)PerfectPour Dataset — Generalization</h2>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <span class="method-text">
+                <br>
+                We evaluate generalization by applying the M2R2 extractor trained on REASSEMBLE to the
+                (Im)PerfectPour bartending dataset. M2R2+DiffAct achieves F1@50 of <strong>89.7%</strong>,
+                outperforming the best vision-only baseline by <strong>16.1 percentage points</strong>. These results
+                demonstrate that when available modalities are similar across datasets, M2R2 features transfer well
+                to new task domains without retraining.
+              </span>
+            </div>
+            <div class="column">
+              <div class="table-container" style="overflow-x: auto;">
+                <table class="results-table">
+                  <thead>
+                    <tr>
+                      <th>Method</th><th>Modalities</th><th>F1@10</th><th>F1@25</th><th>F1@50</th><th>Acc</th><th>EDIT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>BrP+MSTCN</td><td>V</td><td>81.0</td><td>73.9</td><td>63.6</td><td>76.8</td><td>88.9</td>
+                    </tr>
+                    <tr>
+                      <td>BrP+ASRF</td><td>V</td><td>84.1</td><td>82.1</td><td>73.6</td><td>77.7</td><td>91.2</td>
+                    </tr>
+                    <tr>
+                      <td>BrP+DiffAct</td><td>V</td><td>81.6</td><td>79.9</td><td>71.8</td><td>74.4</td><td>83.1</td>
+                    </tr>
+                    <tr class="separator">
+                      <td>M2R2+MSTCN</td><td>V,P,FT,G</td><td class="second">92.6</td><td class="second">89.8</td><td class="second">84.6</td><td class="best">93.9</td><td class="second">88.9</td>
+                    </tr>
+                    <tr>
+                      <td>M2R2+ASRF</td><td>V,P,FT,G</td><td>89.8</td><td>88.5</td><td class="second">86.0</td><td class="second">93.7</td><td>87.9</td>
+                    </tr>
+                    <tr>
+                      <td><strong>M2R2+DiffAct</strong></td><td>V,P,FT,G</td><td class="best">90.5</td><td class="best">89.7</td><td class="best">89.7</td><td>93.3</td><td class="best">83.0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="is-size-6" style="color: #555; margin-top: 0.5rem;">
+                <strong>Table II:</strong> Results on (Im)PerfectPour. M2R2 features trained on REASSEMBLE.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JIGSAWS Results -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">JIGSAWS Dataset — Cross-Embodiment</h2>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <div class="table-container" style="overflow-x: auto;">
+                <table class="results-table">
+                  <thead>
+                    <tr>
+                      <th>Method</th><th>Modalities</th><th>Type</th><th>F1@10</th><th>F1@25</th><th>F1@50</th><th>Acc</th><th>EDIT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Lea et al.</td><td>V</td><td>E2E</td><td>n/r</td><td>n/r</td><td>n/r</td><td>74.2</td><td>66.5</td>
+                    </tr>
+                    <tr>
+                      <td>Weerasinghe et al.</td><td>V,P,G</td><td>E2E</td><td>87.3</td><td>86.5</td><td>81.1</td><td>87.1</td><td>83.9</td>
+                    </tr>
+                    <tr>
+                      <td>Atoum et al.</td><td>V,P</td><td>E2E</td><td>n/r</td><td>n/r</td><td>n/r</td><td class="second">90.3</td><td class="second">89.0</td>
+                    </tr>
+                    <tr class="separator">
+                      <td>BrP+MSTCN</td><td>V</td><td>Modular</td><td>53.2</td><td>41.7</td><td>23.0</td><td>38.7</td><td>76.8</td>
+                    </tr>
+                    <tr>
+                      <td>BrP+ASRF</td><td>V</td><td>Modular</td><td>53.4</td><td>43.2</td><td>24.5</td><td>39.3</td><td>73.6</td>
+                    </tr>
+                    <tr>
+                      <td>BrP+DiffAct</td><td>V</td><td>Modular</td><td>59.6</td><td>49.6</td><td>30.2</td><td>44.5</td><td>81.9</td>
+                    </tr>
+                    <tr class="separator">
+                      <td>M2R2+MSTCN</td><td>V,P,G</td><td>Modular</td><td class="second">93.3</td><td class="second">91.6</td><td class="second">86.3</td><td>87.0</td><td class="second">90.4</td>
+                    </tr>
+                    <tr>
+                      <td>M2R2+ASRF</td><td>V,P,G</td><td>Modular</td><td>93.1</td><td>91.2</td><td>86.0</td><td>85.6</td><td>90.7</td>
+                    </tr>
+                    <tr>
+                      <td><strong>M2R2+DiffAct</strong></td><td>V,P,G</td><td>Modular</td><td class="best">94.3</td><td class="best">93.0</td><td class="best">89.4</td><td class="best">87.1</td><td class="best">91.7</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="is-size-6" style="color: #555; margin-top: 0.5rem;">
+                <strong>Table III:</strong> Results on JIGSAWS (Suturing, Leave-One-User-Out). n/r – not reported.
+              </p>
+            </div>
+            <div class="column">
+              <span class="method-text">
+                <br>
+                On the JIGSAWS surgical gesture recognition dataset, M2R2+DiffAct achieves an F1@50 of
+                <strong>89.4%</strong> and an EDIT score of <strong>91.7%</strong>, surpassing prior
+                state-of-the-art by <strong>1.7%</strong> in EDIT. Unlike previous approaches that rely on
+                additional binary gripper signals or invariant proprioceptive representations, M2R2 directly
+                processes raw sensory readings. This demonstrates that M2R2 generalizes across different
+                embodiments and task domains.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUALITATIVE RESULTS ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-2">Qualitative Results</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">TAS Performance — REASSEMBLE, (Im)PerfectPour &amp; JIGSAWS</h2>
+          </div>
+          <!-- REASSEMBLE video -->
+          <div class="columns" style="align-items: center;">
+            <div class="column">
+              <span class="method-text">
+                <br>
+                <strong>REASSEMBLE</strong> — M2R2 features are less sensitive to high-frequency proprioceptive
+                changes that cause heuristic approaches to over-segment, and more precise in differentiating
+                visually similar objects (e.g., round vs. square pegs) compared to vision-only approaches.
+                The segmentation bar shows ground truth (top) and predicted labels (bottom).
+              </span>
+            </div>
+            <div class="column has-text-centered">
+              <video autoplay controls muted loop style="width: 100%;">
+                <source src="public/videos/reassemble_demo.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <br>
+          <div class="column is-centered has-text-centered">
+            <img src="public/figures/qualitative.png" alt="Qualitative evaluation" style="width: 95%;" />
+            <p class="is-size-6" style="margin-top: 0.5rem; color: #555;">
+              <strong>Fig. 4:</strong> Qualitative evaluation. M2R2 avoids over-segmentation from heuristics (left,
+              middle) and differentiates objects better than vision-only approaches (right).
+            </p>
+          </div>
+
+          <br>
+          <!-- (Im)PerfectPour video -->
+          <div class="columns" style="align-items: center;">
+            <div class="column has-text-centered">
+              <video autoplay controls muted loop style="width: 100%;">
+                <source src="public/videos/ipp_demo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column">
+              <span class="method-text">
+                <br>
+                <strong>(Im)PerfectPour</strong> — M2R2 features trained on REASSEMBLE generalize to a new
+                task domain (bartending) without retraining, achieving F1@50 of 89.7% and outperforming
+                vision-only baselines by 16.1 pp.
+              </span>
+            </div>
+          </div>
+
+          <br>
+          <!-- JIGSAWS video -->
+          <div class="columns" style="align-items: center;">
+            <div class="column">
+              <span class="method-text">
+                <br>
+                <strong>JIGSAWS</strong> — M2R2 generalizes to a surgical robotics setting with a
+                different embodiment (two-arm da Vinci). Using only raw pose, twist, and gripper width,
+                M2R2+DiffAct achieves state-of-the-art F1@50 of 89.4% on the Suturing task.
+              </span>
+            </div>
+            <div class="column has-text-centered">
+              <video autoplay controls muted loop style="width: 100%;">
+                <source src="public/videos/jigsaws_demo.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <br>
+          <div class="column is-centered has-text-centered">
+            <img src="public/figures/coarse_vs_fine.png" alt="Coarse vs fine-grain prediction" style="width: 80%;" />
+            <p class="is-size-6" style="margin-top: 0.5rem; color: #555;">
+              <strong>Fig. 5:</strong> Coarse vs. fine-grain prediction on REASSEMBLE. Large and medium gears are
+              occasionally confused at fine-grain level, but coarse-level segmentation remains correct.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABLATION STUDY ===== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-2">Ablation Study</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="rows">
+        <div class="rows is-centered">
+          <div class="row is-full-width">
+            <h2 class="title is-3">Modality Contribution</h2>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <span class="method-text">
+                <br>
+                We ablate the contribution of each sensor modality on the REASSEMBLE dataset using DiffAct.
+                Key findings:
+                <ul style="margin-top: 0.5rem; font-size: 110%;">
+                  <li><strong>Vision alone</strong> performs worst (F1@50: 21.6%), as many objects are poorly visible due to their small size.</li>
+                  <li><strong>Audio alone</strong> achieves a high detection rate (80.1%) — action transitions are marked by distinct sounds — but struggles to identify objects.</li>
+                  <li><strong>Proprioception alone</strong> performs comparably to all modalities combined (F1@50: 74.5%), reflecting the specificity of the REASSEMBLE dataset.</li>
+                  <li><strong>Gripper width</strong> is the most informative proprioceptive signal — objects can often be distinguished by size.</li>
+                  <li><strong>All modalities</strong> combined yield the best detection rate (82.4%), showing that multimodal fusion improves boundary precision.</li>
+                </ul>
+              </span>
+            </div>
+            <div class="column">
+              <div class="table-container" style="overflow-x: auto;">
+                <table class="results-table" style="margin-top: 1.5rem;">
+                  <thead>
+                    <tr>
+                      <th>Configuration</th><th>F1@10</th><th>F1@25</th><th>F1@50</th><th>Acc</th><th>EDIT</th><th>DR</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Only vision</td><td>27.2</td><td>26.1</td><td>21.6</td><td>21.4</td><td>28.9</td><td>44.3</td>
+                    </tr>
+                    <tr>
+                      <td>Only audio</td><td>39.2</td><td>38.7</td><td>36.4</td><td>34.5</td><td>37.5</td><td class="second">80.1</td>
+                    </tr>
+                    <tr>
+                      <td>Only proprio</td><td class="second">78.0</td><td class="second">77.5</td><td class="second">74.5</td><td class="second">75.4</td><td class="second">69.2</td><td>80.3</td>
+                    </tr>
+                    <tr class="separator">
+                      <td>No gripper</td><td>67.9</td><td>67.2</td><td>64.2</td><td>65.1</td><td>59.2</td><td class="best">82.2</td>
+                    </tr>
+                    <tr>
+                      <td>No pose/vel</td><td>69.9</td><td>69.1</td><td>65.1</td><td>64.6</td><td>61.8</td><td>80.5</td>
+                    </tr>
+                    <tr>
+                      <td>No F/T</td><td>72.9</td><td>72.4</td><td>69.9</td><td>70.4</td><td>65.2</td><td>80.6</td>
+                    </tr>
+                    <tr class="separator">
+                      <td><strong>All modalities</strong></td><td class="best">78.1</td><td class="best">77.7</td><td class="best">74.6</td><td class="best">74.9</td><td class="best">68.7</td><td>82.4</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="is-size-6" style="color: #555; margin-top: 0.5rem;">
+                <strong>Table IV:</strong> Modality ablation on REASSEMBLE with DiffAct (fine-grain labels).
+                DR = Detection Rate.
+              </p>
+            </div>
+          </div>
+          <br>
+          <div class="notification is-warning is-light" style="font-size: 105%;">
+            <strong>Note:</strong> These ablation results are specific to the REASSEMBLE dataset, where
+            objects are small and often identifiable by size or force profile. The relative
+            importance of each modality is likely to differ in tasks with higher visual variability
+            (e.g., meal preparation, where vision may be essential to distinguish similar-looking
+            objects). Further investigation across more diverse datasets is needed to draw general
+            conclusions about modality contributions in robotic TAS.
+          </div>
+          <br>
+          <div class="columns" style="margin-top: 1rem;">
+            <div class="column has-text-centered">
+              <img src="public/figures/ablation_audio.png" alt="Audio-only ablation" style="width: 100%;" />
+              <p class="is-size-6" style="margin-top: 0.4rem; color: #555;">
+                (a) Some objects (e.g., waterproof connector) can be identified from audio alone.
+              </p>
+            </div>
+            <div class="column has-text-centered">
+              <img src="public/figures/ablation_nogrip.png" alt="No-gripper ablation" style="width: 100%;" />
+              <p class="is-size-6" style="margin-top: 0.4rem; color: #555;">
+                (b) Removing gripper information makes object size-based discrimination harder.
+              </p>
+            </div>
+          </div>
+          <p class="is-size-6" style="color: #555; margin-top: 0.3rem; text-align: center;">
+            <strong>Fig. 6:</strong> Qualitative predictions for different modality combinations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BIBTEX ===== -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@inproceedings{sliwowski2025m2r2,
+  title     = {{M2R2: MultiModal Robotic Representation for Temporal Action Segmentation}},
+  author    = {Sliwowski, Daniel and Lee, Dongheui},
+  booktitle = {2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/">Nerfies</a> project page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
